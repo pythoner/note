@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" content-type="text/html"></meta>
+		<title>navigation</title>
+		<script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
+		<link rel="stylesheet" href="../css/main.css"></link>
+
+		<script type="text/javascript">
+			/*
+			$(function(){
+				$(".has_children").click(function(){
+					$(this).addClass("hightlight").children("a").show().end()
+					.siblings().removeClass(".hightlight").children("a").hide();
+				});
+			});
+			*/
+			$(document).ready(function(){
+				$(".has_children").click(function(){
+					$(this).toggleClass("lighthight").children("a").toggle().end()
+					.siblings().removeClass(".highlight").children("a").hide();
+				});
+			});
+		</script>
+	</head>
+	</body>
+		
+			<div id='menu'>
+			<div class="has_children">
+				<span>第一章 认识jQuery</span>
+				<a>1.1 javascript</a>
+				<a>加入jQuery</a>
+				<a>编写简单jQUery代码</a>
+				<a>jquery实现和DOM对象</a>
+			</div>
+			<div class="has_children">
+				<span>第二章 选择器</span>
+				<a>2.1 基本选择器 </a>
+				<a>2.2 层次选择器</a>
+				<a>2.3 过滤选择器</a>
+				<a>2.4 表单选择器</a>
+			</div>
+			<div class="has_children">
+				<span>第三章 jQuery应用</span>
+				<a>第三章 jQuery应用1</a>
+				<a>第三章 jQuery应用2</a>
+				<a>第三章 jQuery应用3</a>
+				<a>第三章 jQuery应用4</a>
+			</div>
+		 </div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" content-type="text/html"></meta>
+		<title>window.onload和$(document).ready()的区别</title>
+		<script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<link rel="stylesheet" href="../css/main.css"></link>
+		<link rel="stylesheet" href="../css/bootstrap.css"></link>
+		<link rel="stylesheet" href="../css/bootstrap-responsive.css"></link>
+		<script type="text/javascript">
+			window.onload = function(){
+				alert("onload 1");
+			}
+			window.onload = function(){
+				alert("onload 2");
+			};
+			$(document).ready(function(){
+				alert("jQuery ready 1");
+			})
+			
+			$(function(){
+				alert("jQuery ready 2");
+			});
+		</script>
+	</head>
+	</body>
+		<img class="img-circle" src = "http://a.bbkz.net/forum/gallery/images/415513/large/1_DSCF2979.jpg"/>
+		<img class="img-rounded" src = "http://a.bbkz.net/forum/gallery/images/415513/large/1_DSCF2979.jpg"/>
+		<img class="img-polaroid" src = "http://a.bbkz.net/forum/gallery/images/415513/large/1_DSCF2979.jpg"/>
+	</body>
+</html>
