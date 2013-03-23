@@ -40,6 +40,9 @@ Counter({'a': 2, 'c': 1, 'b': 1, 'd': 1})
 >>>	print d
 
 #如今发现Counter就是专门做这个事情的， 直接调用Counter就OK了。
+
+>>> from collections import Counter
+>>> Counter(s)
 </pre>
 
 ********************
