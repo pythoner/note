@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" content-type="text/html"></meta>
+		<title>jQuery基本选择器</title>
+		<script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
+		<link rel="stylesheet" href="../css/selector.css"></link>
+	
+		<script type="text/javascript">
+			$(document).ready(function(){
+				//改变id为one的背景颜色
+				$("#one").css("background", "red");
+				
+				//改变class为mini的所有元素的背景颜色
+				$(".mini").css("background-color", "green");
+				
+				//改变div中的字体颜色为黄色
+				$("div").css("color", "yellow");
+				
+				//改变所有span和id为two元素的字体颜色为orange
+				$("span, #two").css("color", "orange");
+			})
+		</script>
+	</head>
+	</body>
+		<div id="one" class="one">
+			id为one， class为one的div
+			<div class="mini">class为mini的div</div>
+		</div>
+		
+		<div class="one" id="two" title="test">
+			id为two， class为one， title为test的div
+			<div class="mini" title="other ">class为mini， title为other的div</div>
+			<div class="mini" title="test"> class 为mini， title为test的div</div>
+		</div>
+		
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini"></div>
+		</div>
+		
+		<div class="one">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title=“test”>class为mini， title为test</div>
+		</div>
+		
+		<div style="display:none" class="none"> style为display：none的div </div>
+		<div class="hide">class为hide的div</div>
+		<div>
+			包含input的type为hidden的div<input type="hidden" size="8" />
+		</div>
+		<span id="mover">正在执行动画的span元素</span>
+	</body>
+</html>

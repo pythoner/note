@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" content-type="text/html"></meta>
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.js"></script>
+		<title></title>
+		<link rel="stylesheet" href="../css/main.css"></link>
+		<link rel="stylesheet" href="../css/bootstrap.css"></link>
+		<link rel="stylesheet" href="../css/bootstrap-responsive.css"></link>
+		<script type="text/javascript">
+				$(function(){
+					//标签选择器
+					$("div").css("background-color", "#888");
+					
+					//ID选择器
+					$("#test").css("font-size", "30px");
+					
+					//类选择器
+					$(".table").css("font-weight", "bold");
+					//群组选择器
+					$("div, table").css({"padding-left":"10px", "padding-right":"20px"});
+					
+					//通配选择器
+					$("*").css("color", "red");
+				});
+		</script>
+	</head>
+	</body>
+		<div>标签选择器举例</div>
+		<div id="test">ID选择器举例</div>
+		<table class="table">
+			<tr>
+				<td>test 1</td>
+				<td>test 2</td>
+			</tr>
+			<tr>
+				<td>test 3</td>
+				<td>test 4</td>
+				
+			</tr>
+		</table>
+	</body>
+</html>

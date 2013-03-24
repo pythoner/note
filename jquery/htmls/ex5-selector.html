@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" content-type="text/html"></meta>
+		<title>jQuery层次选择器</title>
+		<script type="text/javascript" src="../js/jquery-1.5.1.js"></script>
+		<link rel="stylesheet" href="../css/selector.css"></link>
+	
+		<script type="text/javascript">
+			$(document).ready(function(){
+				//1. 改变body内所有的div背景颜色
+				$("body div").css("background", "green");
+				
+				//2. 改变id为two的子div的字体颜色为红色
+				$("#two > div").css("color", "red");
+				
+				
+				
+				$("*").css("background", "#aaa");
+				//3.选取紧邻class为one的div元素
+				alert("选取紧邻class为one的div元素, 应该输出，two, three, four, five");
+				$(".one").css("background", "orange");
+				$(".one + div").each(function(){
+					$(this).css("background","black");
+					alert($(this).attr("id"));
+					
+				})
+				
+				
+				//4.选取id为three后的所有兄弟元素
+				$("*").css("background", "#aaa");
+				alert("选取id为three后的所有兄弟元素, 应该输出，four， five， six, seven")
+				$("#three").css("background", "orange");
+				$("#three ~ div").each(function(){
+					$(this).css("background","red");
+					alert($(this).attr("id"));
+				})
+				
+				//5. 选取id为three的所有兄弟节点
+				$("*").css("background", "#aaa");
+				$("#three").siblings("div").each(function(){
+					$(this).css("background", "red");
+					alert($(this).attr("id"));
+				})
+				
+			})
+		</script>
+	</head>
+	</body>
+		<div id="one" class="one">
+			id为one， class为one的div
+			<div class="mini">class为mini的div</div>
+		</div>
+		
+		<div class="one" id="two" title="test">
+			id为two， class为one， title为test的div
+			<div class="mini" title="other ">class为mini， title为other的div</div>
+			<div class="mini" title="test"> class 为mini， title为test的div</div>
+		</div>
+		
+		<div class="one" id="three">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini"></div>
+		</div>
+		
+		<div class="one" id="four">
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini">class为mini</div>
+			<div class="mini" title=“test”>class为mini， title为test</div>
+		</div>
+		
+		<div style="display:none" class="none" id="five"> style为display：none的div </div>
+		<div class="hide" id="six">class为hide的div</div>
+		<div id="seven">
+			包含input的type为hidden的div<input type="hidden" size="8" />
+		</div>
+		<span id="mover" style="color:red">正在执行动画的span元素</span>
+	</body>
+</html>

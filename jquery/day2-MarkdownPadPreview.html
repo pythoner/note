@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>day2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: d5e7ce436666e7d4a2eeb12e7f8261dacceb3565 */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+.markdown-body img {
+  max-width: 100%
+}
+</style>
+
+</head>
+<body>
+<p><strong>jQuery选择器</strong></p>
+<p>选择器是jQuery的基础， 在jQuery中，对事件处理， 遍历DOM和Ajax操作都依赖于选择器。 如果能够熟练的使用选择器， 不仅能简化代码， 而且还可以达到事半功倍的效果</p>
+<ul>
+<li>
+<p>在了解jQuery选择器前，先了解一下css选择器， 因为jQuery选择器，完全继承了css选择器的风格。常用的css选择器有以下几种：</p>
+<ul>
+<li>标签选择器 -- 以文档元素作为选择符号。在jQuery中的表现形式为:  $(&quot;Element&quot;), 实例如下：</li>
+<li>ID选择器  -- 以文档元素唯一的标识符ID作为选择器。 在jQuery中的表现形式为： $(&quot;#Element_ID&quot;)</li>
+<li>类选择器 -- 以文档元素的class作为选择器</li>
+<li>群组选择器</li>
+<li>后代选择器</li>
+<li>通配选择器</li>
+</ul>
+</li>
+<li>
+<p>jQuery选择器的优点</p>
+<ul>
+<li>
+<p>简洁的语法</p>
+<p>使用$()来作为选择器的函数</p>
+</li>
+<li>
+<p>支持css1到css3</p>
+</li>
+<li>
+<p>完善的处理机制</p>
+<p>jQuery获取网页上不存在的元素不会报错。 eg. 
+$(&quot;#tt&quot;).css(&quot;color&quot;, &quot;red&quot;), 如果ID为tt的元素不存在，那么对于jQuery程序也没有任何的影响，也不会有任何的错误信息。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>jQuery选择器分类</p>
+<p>jQuery选择器分为基本选择器，层次选择器，过滤选择器， 和表单选择器</p>
+<ul>
+<li>
+基本选择器
+基本选择其是jQuery中最常用的选择器， 他通过ID，class， 标签等来查找DOM元，下面是列出的基本选择其
+</li>
+</ul>
+<p><html>
+	<head>
+	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<link rel="stylesheet" href="../css/bootstrap.css"></link>
+	<link rel="stylesheet" href="../css/bootstrap-responsive.css"></link>
+</head>	
+<body></p>
+<table class="table">
+	<tr>
+		<th>选择器</th>
+		<th>描述</th>
+		<th>返回</th>
+		<th>示例</th>
+	</tr>
+	<tr><td>ID选择器 (#id)</td>
+		<td>根据给定的ID匹配一个元素</td>
+		<td>单个元素</td>
+		<td>$("#tt")选取id为tt的元素</td>
+	</tr>
+	<tr>
+		<td>类选择器 (.class)</td>
+		<td>根据给定的类名匹配元素</td>
+		<td>集合元素</td>
+		<td>$(".test")选取class为test的所有元素</td>
+	</tr>
+	<tr>
+			<td>元素选择器</td>
+			<td>根据给定的元素名称返回匹配的元素</td>
+			<td>集合元素</td>
+			<td>$("span")返回所有的span元素</td>
+	</tr>
+	<tr>
+			<td>通配选择器</td>
+			<td>匹配所有元素</td>
+			<td>集合元素</td>
+			<td>$("*")返回所有的元素</td>
+	</tr>
+	<tr>
+			<td>群组选择器 (selector1, selector2,...)</td>
+			<td>将每一个选择器匹配到的元素合并后一起返回</td>
+			<td>集合元素</td>
+			<td>$("span, div, #one")选取所有的span， div，和id为one的选择</td>
+	</tr>
+</table>
+<p></body>
+</html></p>
+<p>举例见ex4-selector.html</p>
+<ul>
+<li>
+<p>层次选择器</p>
+<p><html></p>
+<head>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.css"></link>
+<link rel="stylesheet" href="../css/bootstrap-responsive.css"></link>
+</head>	
+<p><body></p>
+</li>
+</ul>
+<table class="table">
+	<tr>
+		<th>选择器</th>
+		<th>描述</th>
+		<th>返回</th>
+		<th>示例</th>
+	</tr>
+	<tr><td>$("ancestor descendant")</td>
+		<td>选取ancestor后的所有descentdant元素</td>
+		<td>集合元素</td>
+		<td>$("div span")选取div后的所有span元素</td>
+	</tr>
+	<tr>
+		<td>$("parent > child")</td>
+		<td>选取子元素， 而$("ancestor descendant")选择的是所有后代元素</td>
+		<td>集合元素</td>
+		<td>$("div > span")选取div下所有的span子元素</td>
+	</tr>
+	<tr>
+			<td>$("prev + next")</td>
+			<td>选取紧接prev后的next元素</td>
+			<td>集合元素</td>
+			<td>$(".one + div")选取class为one的下一个div元素。 与next()功能类似。</td>
+	</tr>
+	<tr>
+			<td>$("prev ~ siblings")</td>
+			<td>选取prev后的所有sibling兄弟元素</td>
+			<td>集合元素</td>
+			<td>$("#two ~ div")选取id为two后的所有div兄弟元素。 <span style="color:red;">需要说明的是， 这里选择的是prev之后的兄弟元素， 而不是所有的兄弟元素，这里的功能与nextAll()类似，而siblings()是选取所有的兄弟元素，不论前后.</span></td>
+	</tr>
+
+</table>
+<p></body>
+</html></p>
+<p>举例见ex5-selector.html</p>
+</li>
+</ul>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
