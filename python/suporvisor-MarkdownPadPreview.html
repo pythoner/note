@@ -286,15 +286,15 @@ easy_install supervisor
 <p>创建配置文件</p>
 <ul>
 <li>
-<p>运行 <strong>echo_supervisord_conf</strong> 命令.</p>
+<p>echo<strong>echo_supervisord_conf</strong> 命令.</p>
 <p>这会在终端的屏幕上打印supervisor配置文件的所含内容的示例</p>
 </li>
 <li>
-<p>运行 <strong>echo_supervisord_conf &gt; /etc/supervisord.conf</strong>.</p>
+<p>运行 **echo_supervisord_conf &gt; /etc/supervisord.conf..</p>
 <p>把示例内容写入文件 /etc/supervisord.conf</p>
 </li>
 <li>
-<p>运行 <strong>supervisord -c /etc/supervisord.conf</strong> 来启动supervisor. 其中-c参数是用来指定 supervisor的配置文件</p>
+<p>运行 运行 supervisord -c /etc/supervisord.conf** 来启动supervisor. 其中-c参数是用来指定 supervisor的配置文件</p>
 </li>
 </ul>
 <pre>
@@ -305,11 +305,11 @@ easy_install supervisor
 <h3>配置文件</h3>
 <ul>
 <li>
-<p><strong>supervisord</strong>和<strong>supervisorctl</strong>都会使用一个名为supervisord.conf的配置文件。这个配置文件可以通过-c参数指明</p>
+<p><strong>supervisord</strong>和和supervisorctl**都会使用一个名为supervisord.conf的配置文件。这个配置文件可以通过-c参数指明</p>
 <blockquote>
 <p>[root@localhost ~]# supervisord -c /etc/supervisord.conf</p>
 </blockquote>
-<p>如果使用<strong>supervisord</strong>命令的时候没有指明-c参数，那么从下列路径一次查找supervisord.conf文件，一旦找到就返回，不会继续查找</p>
+<p>如果使用<strong>命令的时候没有指明-c参数，那么依次查找下列路径，一旦找到就返回，不会继续查找</strong>命令的时候没有指明-c参数，那么依次查找下列路径，一旦找到就返回，不会继续查找</p>
 <ul>
 <li>$CWD/supervisord.conf              		当前目录下</li>
 <li>$CWD/etc/supervisord.conf				 	当前目录下的etc子目录</li>
@@ -384,7 +384,7 @@ command= python /home/QMS/workspace/test/main.py             ; the program (rela
 <p>这里我们关心的是program:helloworld这部分。这部分是supervisor要管理的程序。</p>
 <ol>
 <li>
-首先我们启动supervisor，在终端运行<strong>supervisord -c /etc/supervisord.conf</strong>，
+首先我们启动supervisor，在终端运行</strong>supervisord -c /etc/supervisord.conf</strong>，
 通过<strong>ps -ef | grep supervisor</strong>来判断supervisor是否成功启动
 </li>
 <li>当supervisor启动起来之后， 我们怎么管理supervisor维护的进程呢？？答案是<strong>supervisorctl</strong>。</li>
@@ -399,11 +399,10 @@ command= python /home/QMS/workspace/test/main.py             ; the program (rela
 <p>我们可以通过supervisorctl help <topic>来获取命令详细的用法</p>
 <pre>
 [root@localhost etc]# supervisorctl help start
-start <name>            Start a process
-start <gname>:*         Start all processes in a group
-start <name> <name>     Start multiple processes or groups
-start all               Start all processes
-	
+	start &lt;name&gt;          Start a process
+	start &lt;gname&gt:*         Start all processes in a group
+	start &lt;name&gt &lt;name&gt;     Start multiple processes or groups
+	start all               Start all processes
 </pre>	
 <p>下面我们通过status命令来查看我们的helloworld这个进程</p>
 <pre>
@@ -411,11 +410,40 @@ start all               Start all processes
 helloworld                       RUNNING    pid 28727, uptime 0:14:32
 </pre>
 <h3>配置详细解释</h3>
+<p>supervisord.conf是类似windows下的ini文件，由多个section组成，section下面是key=value对。 举例如下:</p>
+<pre>
+	[header]
+	title = helloworld
+
+	[email]
+	smtpserver = smtp.163.com
+	smtpuser = xxx
+	smtppwd = xxx
+	
+	....
+</pre>
+<ul>
+<li>
+<p>[unix_http_server] 的设置</p>
+<p>这段没看懂， 回头研究研究</p>
+</li>
+<li>
+<p>[inet<em>http</em>server] 的设置</p>
+<p>这里主要是通过web形式来访问supervisor， 默认开启端口是9001。如上面的配置文件中。</p>
+<pre>
+[inet_http_server]         ; inet (TCP) server disabled by default
+port=:9001        ; (ip_address:port specifier, *:port for all iface)
+</pre>
+<p>这样我们就可以通过ip:port的形式访问supervisor。
+<img src="img/supervisor.jpg" alt="pic" /></p>
+</li>
+</ul>
 <h3>参考</h3>
 <pre>
 http://luchanghong.com/server/2012/09/10/use-supervisor-as-daemonize-of-uwsgi.html
 http://luchanghong.com/server/2012/09/11/some-errors-when-restart-supervisor-with-uwsgi.html
 </pre>
+
 </body>
 </html>
 <!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

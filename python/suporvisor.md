@@ -121,11 +121,10 @@ supervisord.conf配置如下：
 	
 <pre>
 [root@localhost etc]# supervisorctl help start
-start <name>            Start a process
-start <gname>:*         Start all processes in a group
-start <name> <name>     Start multiple processes or groups
-start all               Start all processes
-	
+	start &lt;name&gt;          Start a process
+	start &lt;gname&gt:*         Start all processes in a group
+	start &lt;name&gt &lt;name&gt;     Start multiple processes or groups
+	start all               Start all processes
 </pre>	
 	
 下面我们通过status命令来查看我们的helloworld这个进程
@@ -139,15 +138,42 @@ helloworld                       RUNNING    pid 28727, uptime 0:14:32
 
 ###配置详细解释
 
+supervisord.conf是类似windows下的ini文件，由多个section组成，section下面是key=value对。 举例如下:
+<pre>
+	[header]
+	title = helloworld
 
-。。。。
+	[email]
+	smtpserver = smtp.163.com
+	smtpuser = xxx
+	smtppwd = xxx
+	
+	....
+</pre>
+	
++ [unix\_http_server] 的设置
+	
+	这段没看懂， 回头研究研究
 
++ [inet_http_server] 的设置
+	
+	这里主要是通过web形式来访问supervisor， 默认开启端口是9001。如上面的配置文件中。
 
+	<pre>
+	[inet_http_server]         ; inet (TCP) server disabled by default
+	port=:9001        ; (ip_address:port specifier, *:port for all iface)
+	</pre>
 
+	
+	这样我们就可以通过ip:port的形式访问supervisor。 如下
 
+	![pic](img/supervisor.jpg)
+
+	
 
 ###参考
 <pre>
 http://luchanghong.com/server/2012/09/10/use-supervisor-as-daemonize-of-uwsgi.html
 http://luchanghong.com/server/2012/09/11/some-errors-when-restart-supervisor-with-uwsgi.html
 </pre>
+

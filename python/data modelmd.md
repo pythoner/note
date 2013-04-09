@@ -1,0 +1,1 @@
+[原文](http://docs.python.org/2.7/reference/datamodel.html)
