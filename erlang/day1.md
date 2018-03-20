@@ -1,14 +1,8 @@
-### days
-
 * Erlang Run-Time System Application (ERTS)
-
 
 [原文](http://erlang.org/doc/reference_manual/data_types.html)
 
-
-### Built-In Functions (BIFs)
-
-
+#### Built-In Functions (BIFs)
 #### Expressions 表达式
 #### Data Types
 * Terms
