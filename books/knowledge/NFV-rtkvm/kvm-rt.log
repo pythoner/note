@@ -1,0 +1,54 @@
+[root@localhost rt-tests]# ./cyclictest -t1 -p 80 -n -i 10000 -l 10000
+# /dev/cpu_dma_latency set to 0us
+policy: fifo: loadavg: 0.08 0.13 0.12 1/402 15463          
+
+T: 0 (15454) P:80 I:10000 C:  10000 Min:      9 Act:  118 Avg:   93 Max:     202
+[root@localhost rt-tests]# uname -a
+Linux localhost.localdomain 4.4.7-rt16 #2 SMP Thu May 5 18:38:17 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@localhost rt-tests]# ifconfig 
+ens3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.100.17.162  netmask 255.255.255.0  broadcast 10.100.17.255
+        inet6 fe80::5054:ff:fe12:3456  prefixlen 64  scopeid 0x20<link>
+        ether 52:54:00:12:34:56  txqueuelen 1000  (Ethernet)
+        RX packets 824  bytes 61463 (60.0 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 149  bytes 14873 (14.5 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 756
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 20  bytes 1856 (1.8 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 20  bytes 1856 (1.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@localhost rt-tests]# 
+---------------------------------------------------------------------------
+
+
+
+[root@localhost rt-tests]# uname -a
+Linux localhost.localdomain 4.4.7 #2 SMP Thu May 5 18:22:23 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@localhost rt-tests]# ifconfig
+ens3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.100.17.162  netmask 255.255.255.0  broadcast 10.100.17.255
+        inet6 fe80::5054:ff:fe12:3456  prefixlen 64  scopeid 0x20<link>
+        ether 52:54:00:12:34:56  txqueuelen 1000  (Ethernet)
+        RX packets 336  bytes 26803 (26.1 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 88  bytes 9822 (9.5 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 438
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 20  bytes 1856 (1.8 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 20  bytes 1856 (1.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@localhost rt-tests]# 
+

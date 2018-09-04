@@ -1,0 +1,204 @@
+[test@localhost ~]$ df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root  6.7G  5.7G  1.1G  85% /
+devtmpfs                 911M     0  911M   0% /dev
+tmpfs                    921M  160K  920M   1% /dev/shm
+tmpfs                    921M  8.7M  912M   1% /run
+tmpfs                    921M     0  921M   0% /sys/fs/cgroup
+/dev/sda1                497M  126M  372M  26% /boot
+
+[test@localhost ~]$ su -
+Password: 
+Last login: Thu May 12 03:02:51 EDT 2016 on pts/1
+[root@localhost ~]# fdisk -l /dev/sda
+
+Disk /dev/sda: 10.7 GB, 10737418240 bytes, 20971520 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x00092af3
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     1026047      512000   83  Linux
+/dev/sda2         1026048    16777215     7875584   8e  Linux LVM
+/dev/sda3        16777216    20971519     2097152   8e  Linux LVM
+
+---reboot---
+[root@localhost ~]# vgs
+  VG     #PV #LV #SN Attr   VSize VFree 
+  centos   1   2   0 wz--n- 7.51g 40.00m
+[root@localhost ~]# pvcreate /dev/sda3
+  Physical volume "/dev/sda3" successfully created
+[root@localhost ~]# vgdisplay 
+  --- Volume group ---
+  VG Name               centos
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  3
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               7.51 GiB
+  PE Size               4.00 MiB
+  Total PE              1922
+  Alloc PE / Size       1912 / 7.47 GiB
+  Free  PE / Size       10 / 40.00 MiB
+  VG UUID               zcWJMj-YQbN-iHee-Hl1N-8aem-EqXD-CBIXMx
+   
+
+[root@localhost ~]# vgextend centos /dev/sda3
+  Volume group "centos" successfully extended
+
+[root@localhost ~]# lvdisplay 
+  --- Logical volume ---
+  LV Path                /dev/centos/swap
+  LV Name                swap
+  VG Name                centos
+  LV UUID                aH4hbT-3IaQ-ySTj-4tVA-dgOv-i15F-R9Pg80
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2016-02-19 04:16:55 -0500
+  LV Status              available
+  # open                 2
+  LV Size                820.00 MiB
+  Current LE             205
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:1
+   
+  --- Logical volume ---
+  LV Path                /dev/centos/root
+  LV Name                root
+  VG Name                centos
+  LV UUID                xLAmkx-191E-mKVJ-uLzE-KptX-GiSx-OCnTvn
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2016-02-19 04:16:55 -0500
+  LV Status              available
+  # open                 1
+  LV Size                6.67 GiB
+  Current LE             1707
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:0
+   
+
+[root@localhost ~]# lvextend /dev/centos/root /dev/sda3
+  Size of logical volume centos/root changed from 6.67 GiB (1707 extents) to 8.66 GiB (2218 extents).
+  Logical volume root successfully resized
+[root@localhost ~]# lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/centos/swap
+  LV Name                swap
+  VG Name                centos
+  LV UUID                aH4hbT-3IaQ-ySTj-4tVA-dgOv-i15F-R9Pg80
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2016-02-19 04:16:55 -0500
+  LV Status              available
+  # open                 2
+  LV Size                820.00 MiB
+  Current LE             205
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:1
+   
+  --- Logical volume ---
+  LV Path                /dev/centos/root
+  LV Name                root
+  VG Name                centos
+  LV UUID                xLAmkx-191E-mKVJ-uLzE-KptX-GiSx-OCnTvn
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2016-02-19 04:16:55 -0500
+  LV Status              available
+  # open                 1
+  LV Size                8.66 GiB
+  Current LE             2218
+  Segments               2
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:0
+   
+[root@localhost ~]# df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root  6.7G  5.7G  1.1G  85% /
+devtmpfs                 911M     0  911M   0% /dev
+tmpfs                    921M  148K  920M   1% /dev/shm
+tmpfs                    921M  8.6M  912M   1% /run
+tmpfs                    921M     0  921M   0% /sys/fs/cgroup
+/dev/sda1                497M  126M  372M  26% /boot
+[root@localhost ~]# lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/centos/swap
+  LV Name                swap
+  VG Name                centos
+  LV UUID                aH4hbT-3IaQ-ySTj-4tVA-dgOv-i15F-R9Pg80
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2016-02-19 04:16:55 -0500
+  LV Status              available
+  # open                 2
+  LV Size                820.00 MiB
+  Current LE             205
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:1
+   
+  --- Logical volume ---
+  LV Path                /dev/centos/root
+  LV Name                root
+  VG Name                centos
+  LV UUID                xLAmkx-191E-mKVJ-uLzE-KptX-GiSx-OCnTvn
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2016-02-19 04:16:55 -0500
+  LV Status              available
+  # open                 1
+  LV Size                8.66 GiB
+  Current LE             2218
+  Segments               2
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:0
+   
+[root@localhost ~]# df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root  6.7G  5.7G  1.1G  85% /
+devtmpfs                 911M     0  911M   0% /dev
+tmpfs                    921M  148K  920M   1% /dev/shm
+tmpfs                    921M  8.6M  912M   1% /run
+tmpfs                    921M     0  921M   0% /sys/fs/cgroup
+/dev/sda1                497M  126M  372M  26% /boot
+[root@localhost ~]# xfs_growfs /dev/mapper/centos-root 
+meta-data=/dev/mapper/centos-root isize=256    agcount=4, agsize=436992 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=0        finobt=0
+data     =                       bsize=4096   blocks=1747968, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=0
+log      =internal               bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 1747968 to 2271232
+[root@localhost ~]# df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root  8.7G  5.7G  3.1G  66% /
+devtmpfs                 911M     0  911M   0% /dev
+tmpfs                    921M  148K  920M   1% /dev/shm
+tmpfs                    921M  8.6M  912M   1% /run
+tmpfs                    921M     0  921M   0% /sys/fs/cgroup
+/dev/sda1                497M  126M  372M  26% /boot
+[root@localhost ~]# 
+

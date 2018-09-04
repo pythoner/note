@@ -1,0 +1,99 @@
+[root@sanglp rt-tests]# cyclictest -t1 -p 80 -n -i 10000 -l 10000
+ /dev/cpu_dma_latency set to 0us
+policy: fifo: loadavg: 0.28 0.44 0.23 1/426 4931          
+
+T: 0 ( 4214) P:80 I:10000 C:  10000 Min:      1 Act:    2 Avg:    1 Max:      34
+[root@sanglp rt-tests]# uname -a
+Linux sanglp 4.4.7-rt16 #2 SMP Thu May 5 18:38:17 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@sanglp rt-tests]# 
+------------------------------------------------------------------------------------
+[root@sanglp ~]# cyclictest -t1 -p 80 -n -i 10000 -l 10000
+ /dev/cpu_dma_latency set to 0us
+policy: fifo: loadavg: 0.31 0.55 0.27 1/417 4156          
+
+ T: 0 ( 4138) P:80 I:10000 C:  10000 Min:      1 Act:    1 Avg:    1 Max:      69
+ [root@sanglp ~]# uname -a
+ Linux sanglp 4.4.7 #2 SMP Thu May 5 18:22:23 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+ [root@sanglp ~]# 
+
+
+
+
+
+
+
+
+
+[root@sanglp bin]# partrt create 0xc
+System was successfylly divided into following partitions:
+Isolated CPUs (rt):2-3
+Non-isolated CPUS (nrt):0-1,4-7
+[root@sanglp bin]# uname -a
+Linux sanglp 4.4.7 #2 SMP Thu May 5 18:22:23 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@sanglp bin]# partrt run -c 0x8 rt cyclictest -n -i 10000 0l 10000
+# /dev/cpu_dma_latency set to 0us
+policy: other/other: loadavg: 0.01 0.07 0.06 1/457 9654           
+
+T: 0 ( 9232) P: 0 I:10000 C: 111716 Min:      2 Act:   53 Avg:   51 Max:      75
+^C[root@sanglp bin]# partrt list
+Name:nrt CPUs: 0-1,4-7
+Name:rt CPUs: 2-3
+
+
+
+
+
+
+
+[root@sanglp ~]# 
+[root@sanglp ~]# uname -a
+Linux sanglp 4.4.7-rt16 #2 SMP Thu May 5 18:38:17 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@sanglp ~]# partrt create 0xc
+System was successfylly divided into following partitions:
+Isolated CPUs (rt):2-3
+Non-isolated CPUS (nrt):0-1,4-7
+[root@sanglp ~]# partrt run -c 0x8 rt cyclictest -n -i 10000 -l 10000
+# /dev/cpu_dma_latency set to 0us
+policy: other/other: loadavg: 0.12 0.33 0.20 1/416 5113           
+
+T: 0 ( 4997) P: 0 I:10000 C:  10000 Min:      4 Act:   52 Avg:   52 Max:     274
+[root@sanglp ~]# 
+
+
+
+
+[root@sanglp ~]# uname -a
+Linux sanglp 4.4.7 #2 SMP Thu May 5 18:22:23 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@sanglp ~]# partrt create 0xc
+System was successfylly divided into following partitions:
+Isolated CPUs (rt):2-3
+Non-isolated CPUS (nrt):0-1,4-7
+[root@sanglp ~]# partrt list
+Name:nrt CPUs: 0-1,4-7
+Name:rt CPUs: 2-3
+[root@sanglp ~]# partrt run -c 0x8 rt cyclictest -n -i 10000 -l 10000
+# /dev/cpu_dma_latency set to 0us
+policy: other/other: loadavg: 0.09 0.27 0.16 1/405 4284          
+
+T: 0 ( 4267) P: 0 I:10000 C:  10000 Min:      5 Act:   52 Avg:   51 Max:      70
+
+
+
+[root@sanglp ~]# uname -a
+Linux sanglp 4.4.7-rt16 #2 SMP Thu May 5 18:38:17 CST 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@sanglp ~]# partrt create 0xc
+System was successfylly divided into following partitions:
+Isolated CPUs (rt):2-3
+Non-isolated CPUS (nrt):0-1,4-7
+[root@sanglp ~]# partrt list
+Name:nrt CPUs: 0-1,4-7
+Name:rt CPUs: 2-3
+[root@sanglp ~]# partrt run -c 0x8 rt cyclictest -n -i 10000 -l 10000
+# /dev/cpu_dma_latency set to 0us
+policy: other/other: loadavg: 0.22 0.33 0.17 1/427 4303          
+
+T: 0 ( 4225) P: 0 I:10000 C:  10000 Min:      2 Act:   51 Avg:   50 Max:      68
+[root@sanglp ~]# 
+
+
+
